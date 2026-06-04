@@ -118,12 +118,12 @@ const Round6Result = () => {
             onClick={() =>
               navigate("/final-report", {
                 state: {
-                  r1: state?.r1 || 0,
-                  r2: state?.r2 || 0,
-                  r3: state?.r3 || 0,
-                  scam: state?.scam || 0,
-                  r4: state?.r4 || 0,
-                  r5: state?.r5 || 0,
+                  r1: state?.scores?.r1 || 0,
+                  r2: state?.scores?.r2 || 0,
+                  r3: state?.scores?.r3 || 0,
+                  scam: state?.scores?.scam || 0,
+                  r4: state?.scores?.r4 || 0,
+                  r5: state?.scores?.r5 || 0,
                   r6: score,
                 },
               })

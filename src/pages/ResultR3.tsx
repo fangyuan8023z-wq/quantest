@@ -215,7 +215,7 @@ const ResultR3 = () => {
           <button
             onClick={() =>
               navigate("/scam-game", {
-                state: { round1, round2, round3: { round3Answers }, userInfo },
+                state: { scores: { r1: r1score, r2: r2score, r3: r3score } },
               })
             }
             className="w-full py-4 rounded-xl text-white font-bold text-[16px] transition-all duration-200 cursor-pointer shadow-md hover:scale-[1.01]"

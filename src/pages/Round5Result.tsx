@@ -115,7 +115,11 @@ const Round5Result = () => {
 
         <div className="flex gap-3 pb-8">
           <button
-            onClick={() => navigate("/round6")}
+            onClick={() =>
+              navigate("/round6", {
+                state: { scores: state?.scores, r5: score },
+              })
+            }
             className="flex-1 py-3 rounded-xl text-white font-medium text-[15px] cursor-pointer"
             style={{ backgroundColor: "#6b8f7a" }}
           >

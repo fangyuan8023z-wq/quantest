@@ -205,7 +205,7 @@ const ResultR2 = () => {
           <button
             onClick={() =>
               navigate("/round3", {
-                state: { round1, round2: { round2Answers } },
+                state: { round1, round2: { round2Answers, r2score } },
               })
             }
             className="flex-1 py-3 rounded-xl text-white font-medium text-[15px] transition-all duration-200 cursor-pointer hover:scale-[1.01]"

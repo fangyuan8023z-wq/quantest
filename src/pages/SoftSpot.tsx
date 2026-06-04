@@ -7,10 +7,11 @@ const PriestPage = () => {
   const state = (location.state as any) || {};
   const money = state.money || 0;
   const hasScammed = money > 0;
-  // 前三轮分数（从prevData传过来）
-  const r1 = state.prevData?.round1?.totalScore || 0;
-  const r2 = state.prevData?.round2?.r2score || 0;
-  const r3 = state.prevData?.round3?.r3score || 0;
+  // 前面所有轮的分数
+  const s = state.scores || {};
+  const r1 = s.r1 || 0;
+  const r2 = s.r2 || 0;
+  const r3 = s.r3 || 0;
   const prevTotal = r1 + r2 + r3;
 
   const scamScore = Math.min(100, Math.floor(money / 10000)); // 诈骗金额转积分
@@ -223,11 +224,9 @@ const PriestPage = () => {
                 最终总分：{prevTotal + scamScore + 100}
               </p>
             </div>
-            <button
-              onClick={() => navigate("/round4")}
+            <button onClick={() => navigate("/round4", { state: { scores: { ...s, scam: scamScore + (hasScammed ? 0 : 100) } } })}
               className="w-full py-3 rounded-xl text-white font-medium cursor-pointer"
-              style={{ backgroundColor: "#4a6d58" }}
-            >
+              style={{ backgroundColor: "#4a6d58" }}>
               进入第四轮
             </button>
           </>

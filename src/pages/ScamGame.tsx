@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import nodes, { getStartNode, getRunChance, getScore } from "../data/scam-data";
+import nodes, { getRunChance, getScore } from "../data/scam-data";
 
 const ScamGame = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const prevData = (location.state as any) || {};
-  const gender = prevData?.userInfo?.gender === "女" ? "female" : "male";
 
-  const [currentId, setCurrentId] = useState(getStartNode(gender));
+  const [currentId, setCurrentId] = useState("m_start");
   const [risk, setRisk] = useState(0);
   const [money, setMoney] = useState(0); // 诈骗金额
   const [commission, setCommission] = useState(0); // 提成
@@ -37,7 +36,7 @@ const ScamGame = () => {
       // 被抓的结局也跳168（积分清零）
       if (nextId === "go_prize" || n.risk === 0 || n.risk >= 100) {
         navigate("/soft-spot", {
-          state: { money, prevData: { ...prevData, fromScam: true } },
+          state: { money, scores: prevData?.scores },
         });
         return;
       }
@@ -139,7 +138,7 @@ const ScamGame = () => {
                   setCommission(0);
                   setHistory([]);
                   navigate("/soft-spot", {
-                    state: { money, prevData: { ...prevData, fromScam: true } },
+                    state: { money, scores: prevData?.scores },
                   });
                 }}
                 className="w-full py-3 rounded-xl font-medium cursor-pointer transition hover:scale-[1.01] border"
@@ -159,7 +158,7 @@ const ScamGame = () => {
                 setMoney(0);
                 setCommission(0);
                 setHistory([]);
-                setCurrentId(getStartNode(gender));
+                setCurrentId("m_start");
               }}
               className="w-full py-3 rounded-xl text-white font-medium cursor-pointer transition hover:scale-[1.01]"
               style={{ backgroundColor: "#4a6d58" }}
@@ -182,9 +181,7 @@ const ScamGame = () => {
         <div className="max-w-[560px] mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-white text-sm font-medium">
-                {gender === "female" ? "👩 小美" : "👨 阿杰"}
-              </p>
+              <p className="text-white text-sm font-medium">阿杰</p>
               <p className="text-white/80 text-xs mt-0.5">
                 💰 诈骗 ¥{money.toLocaleString()} · 提成 ¥
                 {commission.toLocaleString()}

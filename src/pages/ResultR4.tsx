@@ -130,7 +130,11 @@ const ResultR4 = () => {
         {/* 按钮 */}
         <div className="flex gap-3 pb-8">
           <button
-            onClick={() => navigate("/round5")}
+            onClick={() =>
+              navigate("/round5", {
+                state: { scores: state?.scores, r4: score },
+              })
+            }
             className="flex-1 py-3 rounded-xl text-white font-medium text-[15px] cursor-pointer"
             style={{ backgroundColor: "#4a6d58" }}
           >
