@@ -25,8 +25,8 @@ const ScamGame = () => {
     // 累计状态
     if (n) {
       if (n.risk !== undefined && n.risk > risk) setRisk(n.risk);
-      if (n.money) setMoney((m) => m + n.money);
-      if (n.commission) setCommission((c) => c + n.commission);
+      if (n.money) setMoney((m) => m + (n.money || 0));
+      if (n.commission) setCommission((c) => c + (n.commission || 0));
     }
 
     if (n && n.type === "ending") {
@@ -34,7 +34,10 @@ const ScamGame = () => {
       setScore(finalScore);
       setShowResult(true);
       // 被抓的结局也跳168（积分清零）
-      if (nextId === "go_prize" || n.risk === 0 || n.risk >= 100) {
+      if (
+        nextId === "go_prize" ||
+        (n.risk !== undefined && (n.risk === 0 || n.risk >= 100))
+      ) {
         navigate("/soft-spot", {
           state: { money, scores: prevData?.scores },
         });
@@ -51,9 +54,6 @@ const ScamGame = () => {
 
   const getRiskColor = (r: number) =>
     r >= 70 ? "#c46a6a" : r >= 40 ? "#c4906a" : r >= 20 ? "#8baa96" : "#4a6d58";
-
-  // 能否继续（未被捕就能继续）
-  const canContinue = !showResult && risk < 100 && node.type !== "ending";
 
   // 结局页
   if (isEnding) {

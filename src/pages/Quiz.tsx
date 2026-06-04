@@ -49,7 +49,6 @@ const Quiz = () => {
     currentNode,
     histories[bigIdx] || [],
   );
-  const currentAnswering = visibleQuestions.find((q) => q.selectedIndex === -1);
   const isLastBig = bigIdx >= questions.length - 1;
   const progressValue = (bigIdx / questions.length) * 100;
 

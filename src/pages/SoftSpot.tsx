@@ -20,7 +20,6 @@ const PriestPage = () => {
   );
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [code, setCode] = useState("");
   const [conclusion, setConclusion] = useState("");
 
   const allFilled = name && phone.length === 11;
@@ -29,11 +28,6 @@ const PriestPage = () => {
     if (!allFilled) return;
     if (hasScammed) setConclusion("scammed-bad");
     else setConclusion("scammed-naive");
-    setStep("caught");
-  };
-
-  const handleSubmit = () => {
-    if (!code) return;
     setStep("caught");
   };
 
@@ -224,9 +218,17 @@ const PriestPage = () => {
                 最终总分：{prevTotal + scamScore + 100}
               </p>
             </div>
-            <button onClick={() => navigate("/round4", { state: { scores: { ...s, scam: scamScore + (hasScammed ? 0 : 100) } } })}
+            <button
+              onClick={() =>
+                navigate("/round4", {
+                  state: {
+                    scores: { ...s, scam: scamScore + (hasScammed ? 0 : 100) },
+                  },
+                })
+              }
               className="w-full py-3 rounded-xl text-white font-medium cursor-pointer"
-              style={{ backgroundColor: "#4a6d58" }}>
+              style={{ backgroundColor: "#4a6d58" }}
+            >
               进入第四轮
             </button>
           </>

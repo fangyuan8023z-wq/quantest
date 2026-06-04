@@ -20,7 +20,7 @@ export const getRunChance = (risk: number): number => {
   return 0;
 };
 
-export const getScore = (risk: number, money: number): number => {
+export const getScore = (_risk: number, money: number): number => {
   // 骗得越多分数越高，分数只由诈骗金额决定（和风险无关）
   // 满分100：骗得越多分越高
   // 阶梯：10万=10分, 50万=50分, 100万=80分, 200万+=100分

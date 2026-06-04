@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { round2Questions, getRound2Results } from "../data/round2";
+import { getRound2Results } from "../data/round2";
 import { getRanking } from "../data/questions";
 
 const ResultR2 = () => {

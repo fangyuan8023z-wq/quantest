@@ -11,7 +11,7 @@ export interface ChatMessage {
 
 export interface Scene {
   id: string;
-  type: "chat" | "call" | "sms" | "app";
+  type: "chat" | "call" | "sms" | "app" | "form";
   title: string;
   avatar?: string;
   // 聊天场景：消息序列

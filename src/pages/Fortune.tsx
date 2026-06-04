@@ -130,7 +130,7 @@ const fortuneLib: Record<string, any> = {
   },
 };
 
-const generateFortune = (zodiac: string, province: string, city: string) => {
+const generateFortune = (zodiac: string, _province: string, _city: string) => {
   const lib = fortuneLib[zodiac];
   if (!lib) return null;
   const pick = (arr: string[]) => arr[Math.floor(Math.random() * arr.length)];

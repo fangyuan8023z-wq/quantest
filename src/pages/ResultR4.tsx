@@ -5,7 +5,6 @@ const ResultR4 = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const state = location.state as any;
-  const prevData = state || {};
 
   // 只取当前轮次的答题
   const currentAnswers = state?.round4Answers || [];

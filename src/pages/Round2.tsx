@@ -9,8 +9,8 @@ const Round2 = () => {
   const round1Data = location.state as any;
 
   const [sel, setSel] = useState<Record<number, number | number[]>>({});
-  const [done, setDone] = useState(false);
-  const [showConfirm, setShowConfirm] = useState<number | null>(null);
+  const done = false;
+  const [, setShowConfirm] = useState<number | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
 
   // 自动滚动到当前未答的题

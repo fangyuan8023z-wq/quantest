@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 interface Question {
   id: number;
-  type: "single" | "judge" | "multiple";
+  type: "single" | "judge" | "multiple" | "open";
   question: string;
   options: string[];
   answer: number | number[];

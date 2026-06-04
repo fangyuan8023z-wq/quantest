@@ -5,26 +5,14 @@ const ResultR3 = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const state = location.state as any;
-  const {
-    round1,
-    round2,
-    round3Answers,
-    stage,
-    storyAnswers,
-    finalScore,
-    conclusion,
-  } = state || {};
+  const { round1, round2, round3Answers, stage, finalScore, conclusion } =
+    state || {};
 
   // 判断是哪个模式
   const isStoryMode = stage === "story";
 
   // 如果是故事模式（软肋挑战）
   if (isStoryMode) {
-    const totalFromPrev =
-      (round1?.totalScore || 0) + (round2?.round2Answers?.length || 0) * 4;
-    const grandTotal = Math.max(0, totalFromPrev + (finalScore || 0));
-    const userInfo = round1?.userInfo || {};
-
     return (
       <div
         className="min-h-screen px-4 py-8"
@@ -97,8 +85,6 @@ const ResultR3 = () => {
     return { text: "要加强了", color: "#c46a6a" };
   };
   const level = getLevel(totalScore);
-  const userInfo = round1?.userInfo || {};
-  const userGender = userInfo.gender || "男";
 
   return (
     <div
