@@ -1,0 +1,62 @@
+// ===== 领奖陷阱（所有人都能走到）=====
+"prize": {
+    id: "prize",
+    type: "chat",
+    title: "测试系统",
+    messages: [
+      { from: "other", text: "🎉 恭喜你通过软肋考验！", delay: 500 },
+      {
+        from: "other",
+        text: "你将获得价值168元定制纪念品一份，过关的人中会抽取3位送出。",
+        delay: 2000,
+      },
+      {
+        from: "other",
+        text: "你可以选择：\n① 要实物纪念品 → 填写收货地址\n② 折现168元 → 填写银行卡号\n\n填完信息后点击「获取验证码」即可提交。",
+        delay: 3000,
+      },
+      { from: "other", text: "当然，你也可以直接关闭这个页面，跳过领奖。", delay: 2500 },
+    ],
+    actions: [
+      { text: "🎁 我要纪念品（填写地址）", nextId: "prize-form", score: 0, isTrap: true },
+      { text: "💰 我要折现（填写卡号）", nextId: "prize-form2", score: 0, isTrap: true },
+      { text: "跳过领奖，进入第四轮", nextId: "end-pass", score: 20 },
+    ],
+  },
+  "prize-form": {
+    id: "prize-form",
+    type: "app",
+    title: "领奖信息 · 实物纪念品",
+    messages: [
+      { from: "other", text: "填写地址信息，提交后我们将在7个工作日内寄出", delay: 300 },
+    ],
+    actions: [],
+  },
+  "prize-form2": {
+    id: "prize-form2",
+    type: "app",
+    title: "领奖信息 · 折现168元",
+    messages: [
+      { from: "other", text: "填写银行卡信息，折现奖金将在3个工作日内到账", delay: 300 },
+    ],
+    actions: [],
+  },
+  "prize-caught": {
+    id: "prize-caught",
+    type: "chat",
+    title: "测试系统",
+    messages: [
+      { from: "other", text: "😈 你……还是被骗了。", delay: 500 },
+      {
+        from: "other",
+        text: "经过了前面那么多陷阱的考验，你在最后一刻还是把自己的信息交了出去。",
+        delay: 2500,
+      },
+      {
+        from: "other",
+        text: "记住这种感觉。下次，就不会了。🛡️",
+        delay: 2500,
+      },
+    ],
+    actions: [{ text: "记住了", nextId: "end", score: 0 }],
+  },

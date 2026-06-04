@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.vite/
+*.local
+题库知识库/
+选题设计.md

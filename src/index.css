@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@theme {
+  --color-mint: #f5faf7;
+  --color-card: #ffffff;
+  --color-forest: #4a6d58;
+  --color-forest-light: #e8f0ec;
+  --color-forest-dark: #3a5a48;
+  --color-border: #e5ede8;
+  --color-text: #1a1a1a;
+  --color-text-secondary: #666666;
+  --color-text-muted: #999999;
+  --font-sans: "Inter", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-mint);
+  color: var(--color-text);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* 单选项圆圈 */
+input[type="radio"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #d0d9d3;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+input[type="radio"]:checked {
+  border-color: var(--color-forest);
+}
+input[type="radio"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 10px;
+  height: 10px;
+  background: var(--color-forest);
+  border-radius: 50%;
+}
+
+/* 进度条 */
+progress {
+  appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  overflow: hidden;
+  background: #e5ede8;
+}
+progress::-webkit-progress-bar {
+  background: #e5ede8;
+}
+progress::-webkit-progress-value {
+  background: var(--color-forest);
+  transition: width 0.4s ease;
+}
+
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d0d9d3;
+  border-radius: 3px;
+}
